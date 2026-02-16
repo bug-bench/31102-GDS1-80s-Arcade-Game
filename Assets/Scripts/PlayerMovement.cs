@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -29,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
             moveAction.action.Disable();
     }
 
-    // Physics-driven movement (4-direction, normalized so diagonal isn't faster)
     private void FixedUpdate()
     {
         Vector2 input = Vector2.zero;
@@ -38,7 +36,27 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 direction = input.normalized;
 
-        // use linearVelocity (project uses this API)
         rb.linearVelocity = direction * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("Obstacle Collision");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Soldier"))
+        {
+            Debug.Log("Soldier collected");
+        }
+
+        if (collision.gameObject.CompareTag("Tent"))
+        {
+            Debug.Log("Soldier Dropped Off");
+        }
     }
 }
