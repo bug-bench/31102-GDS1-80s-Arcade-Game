@@ -43,15 +43,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle Collision");
+            Debug.Log("Game Over: Player hit an obstacle!");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Soldier"))
         {
-            Debug.Log("Soldier collected");
+            bool pickedUp = SoldierManager.Instance != null && SoldierManager.Instance.TryPickupSoldier(collision.gameObject);
+            if (pickedUp)
+            {
+                Debug.Log("Soldier collected and added to array.");
+            }
+            else
+            {
+                Debug.Log("Cannot pick up more soldiers. Array is full.");
+            }
         }
 
         if (collision.gameObject.CompareTag("Tent"))
