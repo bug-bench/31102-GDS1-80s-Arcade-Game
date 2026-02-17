@@ -1,0 +1,63 @@
+using UnityEngine;
+
+public class PlayerManager : MonoBehaviour
+{
+    public GameObject[] pickedUpSoldiers = new GameObject[3];
+    private int pickedUpCount = 0;    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("Game Over: Player hit an obstacle!");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Soldier"))
+        {
+            if (pickedUpCount >= pickedUpSoldiers.Length)
+            {
+                Debug.Log("Cannot pick up more soldiers.");
+                return;
+            }
+
+            if (SoldierManager.Instance != null)
+            {
+                SoldierManager.Instance.RemoveFromDeployed(collision.gameObject);
+            }
+            pickedUpSoldiers[pickedUpCount] = collision.gameObject;
+            pickedUpCount++;
+            collision.gameObject.SetActive(false);
+            Debug.Log("Soldier collected. Total picked up: " + pickedUpCount);
+        }
+
+        if (collision.gameObject.CompareTag("Tent"))
+        {
+            MedicTentManager tentManager = collision.gameObject.GetComponent<MedicTentManager>();
+            if (tentManager != null)
+            {
+                int deposited = 0;
+                for (int i = 0; i < pickedUpSoldiers.Length; i++)
+                {
+                    GameObject soldier = pickedUpSoldiers[i];
+                    if (soldier != null)
+                    {
+                        if (tentManager.TryDepositSoldier(soldier))
+                        {
+                            pickedUpSoldiers[i] = null;
+                            deposited++;
+                        }
+                    }
+                }
+                pickedUpCount = 0;
+                Debug.Log($"{deposited} soldier/s dropped off");
+            }
+            else
+            {
+                Debug.Log("no soldiers to drop off.");
+            }
+        }
+    }
+}
