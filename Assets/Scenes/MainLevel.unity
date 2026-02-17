@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 372127536}
   - component: {fileID: 372127535}
   - component: {fileID: 372127534}
+  - component: {fileID: 372127539}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -438,6 +439,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372127539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372127533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b94ff67059614439687729a7afed3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  pickedUpSoldiers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,10 +621,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef13512b744f7bc42b199eaeb0ff38c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoldierManager
-  carriedSoldiers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  deployedSoldiers:
+  - {fileID: 2119924130}
+  - {fileID: 1996575557}
+  - {fileID: 1825938840}
+  - {fileID: 803403500}
 --- !u!4 &573756863
 Transform:
   m_ObjectHideFlags: 0
@@ -638,8 +656,9 @@ GameObject:
   - component: {fileID: 578284880}
   - component: {fileID: 578284879}
   - component: {fileID: 578284878}
+  - component: {fileID: 578284881}
   m_Layer: 0
-  m_Name: Medic Tent Dropoff
+  m_Name: Medic Tent
   m_TagString: Tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -765,6 +784,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578284881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578284877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325cd7a2a09120a4094274bba02d3dc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MedicTentManager
+  droppedOffSoldiers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
