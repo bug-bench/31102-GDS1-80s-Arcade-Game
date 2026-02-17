@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input")]
     [SerializeField] private InputActionReference moveAction;
 
+
     private Rigidbody2D rb;
 
     private void Awake()
@@ -37,35 +38,5 @@ public class PlayerMovement : MonoBehaviour
         Vector2 direction = input.normalized;
 
         rb.linearVelocity = direction * speed;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            Debug.Log("Game Over: Player hit an obstacle!");
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Soldier"))
-        {
-            bool pickedUp = SoldierManager.Instance != null && SoldierManager.Instance.TryPickupSoldier(collision.gameObject);
-            if (pickedUp)
-            {
-                Debug.Log("Soldier collected and added to array.");
-            }
-            else
-            {
-                Debug.Log("Cannot pick up more soldiers. Array is full.");
-            }
-        }
-
-        if (collision.gameObject.CompareTag("Tent"))
-        {
-            Debug.Log("Soldier Dropped Off");
-        }
     }
 }

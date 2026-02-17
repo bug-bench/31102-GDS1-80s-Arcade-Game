@@ -3,8 +3,7 @@ using UnityEngine;
 public class SoldierManager : MonoBehaviour
 {
     public static SoldierManager Instance { get; private set; }
-    public GameObject[] carriedSoldiers = new GameObject[3];
-    private int soldierCount = 0;
+    public GameObject[] deployedSoldiers;
 
     private void Awake()
     {
@@ -15,31 +14,20 @@ public class SoldierManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+        deployedSoldiers = GameObject.FindGameObjectsWithTag("Soldier");
     }
 
-    public bool TryPickupSoldier(GameObject soldier)
+    public void RemoveFromDeployed(GameObject soldier)
     {
-        if (soldierCount >= carriedSoldiers.Length)
-            return false;
-
-        carriedSoldiers[soldierCount] = soldier;
-        soldierCount++;
-        soldier.SetActive(false);
-        return true;
-    }
-
-    public int GetCarriedCount()
-    {
-        return soldierCount;
-    }
-
-    public void ResetSoldiers()
-    {
-        for (int i = 0; i < carriedSoldiers.Length; i++)
+        for (int i = 0; i < deployedSoldiers.Length; i++)
         {
-            carriedSoldiers[i] = null;
+            if (deployedSoldiers[i] == soldier)
+            {
+                deployedSoldiers[i] = null;
+                break;
+            }
         }
-        soldierCount = 0;
     }
 }
