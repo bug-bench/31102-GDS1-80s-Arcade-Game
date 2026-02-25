@@ -262,6 +262,85 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &240608433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240608434}
+  - component: {fileID: 240608436}
+  - component: {fileID: 240608435}
+  m_Layer: 5
+  m_Name: Rescued (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &240608434
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240608433}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1.000181, y: 1.000181, z: 1.000181}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1910399178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 117.06001, y: -3.5}
+  m_SizeDelta: {x: 189.5, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &240608435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240608433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.05882353, g: 0.21960784, b: 0.05882353, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f7f30e5b062083e4ba25e010de8bd258, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Total Rescued:'
+--- !u!222 &240608436
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240608433}
+  m_CullTransparentMesh: 1
 --- !u!114 &372127539 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4018643505445167336, guid: b4be04fc81894a0409fd29f4828293bb, type: 3}
@@ -3506,9 +3585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4b3d1b7561fc54ab1b51a3893d6e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  infiniteModeEnabled: 0
   playerManager: {fileID: 372127539}
   medicTentManager: {fileID: 578284881}
   resetGameAction: {fileID: -2506461838640924362, guid: 926e2dd25db51504da0e58524f015a9b, type: 3}
+  quitToMenuAction: {fileID: 5706453589065539639, guid: bd30d84608b7f854298d802dc3a939d1, type: 3}
 --- !u!1 &1461867227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3798,6 +3879,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2100950009}
+  - {fileID: 240608434}
   - {fileID: 1945379236}
   m_Father: {fileID: 443371192}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4061,6 +4143,60 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1976199150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976199152}
+  - component: {fileID: 1976199151}
+  m_Layer: 0
+  m_Name: InfiniteModeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1976199151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976199150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee9b04d0301fc44fa2e72ee51385c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InfiniteModeManager
+  infiniteModeEnabled: 1
+  treePrefab: {fileID: 509662908368411689, guid: 773006f4d878dc645b9943a939767111, type: 3}
+  soldierPrefab: {fileID: 8659381659273990651, guid: d7365d2e5e4c1804fb75e7fb8a7e2406, type: 3}
+  minSoldiers: 2
+  maxSoldiers: 5
+  numTrees: 20
+  totalRescuedText: {fileID: 0}
+  winText: {fileID: 401714741}
+  gameOverText: {fileID: 486976626}
+  mainCamera: {fileID: 0}
+--- !u!4 &1976199152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976199150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.39519, y: 1.30124, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2100950008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4394,3 +4530,4 @@ SceneRoots:
   - {fileID: 573756863}
   - {fileID: 1191006474}
   - {fileID: 1461867229}
+  - {fileID: 1976199152}

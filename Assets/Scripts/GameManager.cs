@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Game Mode")]
+    public bool infiniteModeEnabled = false; // Set true in infinite mode scene only
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private MedicTentManager medicTentManager;
     [SerializeField] private InputActionReference resetGameAction;
