@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     private int pickedUpCount = 0;    
 
     [SerializeField] private GameUIManager uiManager;
+    [SerializeField] private AudioSource pickupAudioSource;
+    [SerializeField] private AudioClip pickupClip;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -36,6 +38,10 @@ public class PlayerManager : MonoBehaviour
             pickedUpSoldiers[pickedUpCount] = collision.gameObject;
             pickedUpCount++;
             collision.gameObject.SetActive(false);
+            if (pickupAudioSource != null && pickupClip != null)
+            {
+                pickupAudioSource.PlayOneShot(pickupClip);
+            }
             Debug.Log("Soldier collected. Total picked up: " + pickedUpCount);
         }
 
