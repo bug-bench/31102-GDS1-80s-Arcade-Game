@@ -1,14 +1,20 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerManager : MonoBehaviour
 {
     public GameObject[] pickedUpSoldiers = new GameObject[3];
     private int pickedUpCount = 0;    
 
+    [SerializeField] private GameUIManager uiManager;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            if (uiManager != null) uiManager.ShowGameOver();
+            gameObject.SetActive(false); 
             Debug.Log("Game Over: Player hit an obstacle!");
         }
     }
@@ -57,6 +63,14 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 Debug.Log("no soldiers to drop off.");
+            }
+            if (uiManager != null)
+            {
+                var gameManager = GameObject.FindFirstObjectByType<GameManager>();
+                if (gameManager != null)
+                {
+                    gameManager.CheckWinCondition(uiManager);
+                }
             }
         }
     }
