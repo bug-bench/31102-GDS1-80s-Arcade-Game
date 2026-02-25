@@ -4,9 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Game Mode")]
+    public bool infiniteModeEnabled = false; // Set true in infinite mode scene only
     [SerializeField] private PlayerManager playerManager;
     [SerializeField] private MedicTentManager medicTentManager;
     [SerializeField] private InputActionReference resetGameAction;
+    [SerializeField] private InputActionReference quitToMenuAction;
 
 
     public int GetPickedUpSoldierCount()
@@ -32,7 +35,6 @@ public class GameManager : MonoBehaviour
         return playerManager.pickedUpSoldiers.Length;
     }
 
-    // Returns the maximum number of soldiers that can be rescued (for UI max slots)
     public int GetMaxRescuedSoldiers()
     {
         if (medicTentManager == null || medicTentManager.droppedOffSoldiers == null) return 0;
@@ -43,12 +45,16 @@ public class GameManager : MonoBehaviour
     {
         if (resetGameAction != null && resetGameAction.action != null)
             resetGameAction.action.Enable();
+        if (quitToMenuAction != null && quitToMenuAction.action != null)
+            quitToMenuAction.action.Enable();
     }
 
     private void OnDisable()
     {
         if (resetGameAction != null && resetGameAction.action != null)
             resetGameAction.action.Disable();
+        if (quitToMenuAction != null && quitToMenuAction.action != null)
+            quitToMenuAction.action.Disable();
     }
 
     private void FixedUpdate()
@@ -57,6 +63,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             Debug.Log("Game Reset!");
+        }
+        if (quitToMenuAction != null && quitToMenuAction.action != null && quitToMenuAction.action.triggered)
+        {
+            SceneManager.LoadScene("StartScreen");
+            Debug.Log("Quit to StartScreen!");
         }
     }
 
