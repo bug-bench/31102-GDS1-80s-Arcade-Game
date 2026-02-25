@@ -3509,7 +3509,6 @@ MonoBehaviour:
   playerManager: {fileID: 372127539}
   medicTentManager: {fileID: 578284881}
   resetGameAction: {fileID: -2506461838640924362, guid: 926e2dd25db51504da0e58524f015a9b, type: 3}
-  quitToMenuAction: {fileID: 5706453589065539639, guid: bd30d84608b7f854298d802dc3a939d1, type: 3}
 --- !u!1 &1461867227
 GameObject:
   m_ObjectHideFlags: 0

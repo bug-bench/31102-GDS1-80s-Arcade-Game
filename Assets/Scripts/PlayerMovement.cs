@@ -43,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.linearVelocity = direction * speed;
 
-        // Clamp position to bounds
         Vector3 pos = transform.position;
         if (useCameraBounds && Camera.main != null)
         {

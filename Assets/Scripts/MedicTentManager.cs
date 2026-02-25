@@ -7,7 +7,6 @@ public class MedicTentManager : MonoBehaviour
 
     private void Start()
     {
-        // Set the droppedOffSoldiers array size to the number of soldiers in the scene at start
         int soldierCount = GameObject.FindGameObjectsWithTag("Soldier").Length;
         droppedOffSoldiers = new GameObject[soldierCount];
     }
