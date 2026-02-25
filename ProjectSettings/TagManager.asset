@@ -14,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - GameWorld
   - 
   - 
   - 
@@ -43,6 +43,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ui
+    uniqueID: 2916316905
+    locked: 0
+  - name: GameWorld
+    uniqueID: 234204319
     locked: 0
   m_RenderingLayers:
   - Default

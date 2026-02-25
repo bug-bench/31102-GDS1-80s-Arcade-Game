@@ -59,4 +59,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Reset!");
         }
     }
+
+    public void CheckWinCondition(GameUIManager uiManager)
+    {
+        if (GetRescuedSoldierCount() >= GetMaxRescuedSoldiers() && GetMaxRescuedSoldiers() > 0)
+        {
+            uiManager.ShowWin();
+        }
+    }
 }
